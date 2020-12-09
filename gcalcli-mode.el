@@ -56,5 +56,11 @@
     (gcalcli-insert-agenda)
     (visual-line-mode -1)))
 
+(defvar gcalcli-mode-map (make-sparse-keymap)
+  "Keymap for gcalcli-mode.")
+
+(define-key gcalcli-mode-map (kbd "n") 'next-line)
+(define-key gcalcli-mode-map (kbd "p") 'previous-line)
+
 (provide 'gcalcli-mode)
 ;;; gcalcli-mode.el ends here
