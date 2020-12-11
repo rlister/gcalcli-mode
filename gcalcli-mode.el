@@ -45,6 +45,11 @@
         (insert (shell-command-to-string cmd))
         (ansi-color-apply-on-region (point-min) (point-max))))))
 
+(defun gcalcli-refresh ()
+  "Call gcalcli to update buffer."
+  (interactive)
+  (gcalcli-insert-agenda))
+
 ;;;###autoload
 (defun gcalcli-agenda ()
   "Display gcalcli agenda."
@@ -61,6 +66,7 @@
 
 (define-key gcalcli-mode-map (kbd "n") 'next-line)
 (define-key gcalcli-mode-map (kbd "p") 'previous-line)
+(define-key gcalcli-mode-map (kbd "g") 'gcalcli-refresh)
 
 (provide 'gcalcli-mode)
 ;;; gcalcli-mode.el ends here
