@@ -50,6 +50,18 @@
   (interactive)
   (gcalcli-insert-agenda))
 
+(defun gcalcli-set-details (str)
+  "Set value of --details agenda arg; with new value will overwrite, with same value will toggle."
+  (if (string= gcalcli--details str)
+      (setq gcalcli--details nil)
+    (setq gcalcli--details str))
+  (gcalcli-refresh))
+
+(defun gcalcli-toggle-location ()
+  "Show/unshow event locations."
+  (interactive)
+  (gcalcli-set-details "location"))
+
 ;;;###autoload
 (defun gcalcli-agenda ()
   "Display gcalcli agenda."
@@ -67,6 +79,7 @@
 (define-key gcalcli-mode-map (kbd "n") 'next-line)
 (define-key gcalcli-mode-map (kbd "p") 'previous-line)
 (define-key gcalcli-mode-map (kbd "g") 'gcalcli-refresh)
+(define-key gcalcli-mode-map (kbd "l") 'gcalcli-toggle-location)
 
 (provide 'gcalcli-mode)
 ;;; gcalcli-mode.el ends here
