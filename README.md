@@ -13,7 +13,7 @@ This mode was inspired by the blog post
 
 ## Installation
 
-First [install gcalci](https://github.com/insanum/gcalcli#installation).
+First [install gcalcli](https://github.com/insanum/gcalcli#installation).
 
 It is recommended to get the agenda view configured how you like using
 the standard option file setup.
