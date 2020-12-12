@@ -1,3 +1,39 @@
+;;; gcalcli-mode.el --- view gcalcli output in emacs
+
+;; Copyright (C) 2020 by Ric Lister
+
+;; Author: Ric Lister
+;; URL: https://github.com/rlister/gcalcli-mode
+;; Package-Requires: ((emacs "25.1"))
+
+;; This file is not part of GNU Emacs.
+
+;; This program is free software; you can redistribute it and/or
+;; modify it under the terms of the GNU General Public License as
+;; published by the Free Software Foundation; either version 2 of the
+;; License, or any later version.
+
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; if not, write to the Free Software
+;; Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+;; 02111-1307, USA.
+
+;;; Commentary:
+
+;; Minimalist viewer for output of gcalcli tool to view Google Calendar in emacs.
+;;
+;; Usage:
+;;
+;; Add the following to your emacs config:
+;;
+;; (add-to-list 'load-path "~/path/to/gcalcli-mode")
+;; (autoload 'gcalcli-agenda "gcalcli-agenda" nil t)
+
 (define-derived-mode gcalcli-mode special-mode "GCal")
 
 (defvar gcalcli-bin (executable-find "gcalcli")
