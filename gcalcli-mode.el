@@ -13,6 +13,9 @@
 (defvar-local gcalcli--details nil
   "Buffer local agenda details to show.")
 
+(defvar-local gcalcli--start-offset nil
+  "Days ahead of current time to start agenda.")
+
 (defun gcalcli-read-config ()
   "If gcalcli-config-alist has more than one entry, ask user which to use, and return alist cdr."
   (if (< (length gcalcli-config-alist) 2)
@@ -30,7 +33,8 @@
           (list "agenda")
           (when gcalcli--details
             (list "--details" gcalcli--details))
-          )))
+          (when gcalcli--start-offset
+            (list (format-time-string "%Y-%m-%d" (time-add (current-time) (* gcalcli--start-offset 24 3600))))))))
     (mapconcat 'identity (cons gcalcli-bin args) " ")))
 
 (defun gcalcli-insert-agenda ()
@@ -62,6 +66,29 @@
   (interactive)
   (gcalcli-set-details "location"))
 
+(defun gcalcli-incr-start-offset (days)
+  "Increase start offset by given number of days, or nil to reset."
+  (if days
+      (let ((current (or gcalcli--start-offset 0)))
+        (setq gcalcli--start-offset (+ current days)))
+    (setq gcalcli--start-offset nil))
+  (gcalcli-refresh))
+
+(defun gcalcli-agenda-later ()
+  "Go forward in time by the current span."
+  (interactive)
+  (gcalcli-incr-start-offset 7))
+
+(defun gcalcli-agenda-earlier ()
+  "Go backward in time by the current span."
+  (interactive)
+  (gcalcli-incr-start-offset -7))
+
+(defun gcalcli-agenda-today ()
+  "Reset view to current agenda span."
+  (interactive)
+  (gcalcli-incr-start-offset nil))
+
 ;;;###autoload
 (defun gcalcli-agenda ()
   "Display gcalcli agenda."
@@ -80,6 +107,9 @@
 (define-key gcalcli-mode-map (kbd "p") 'previous-line)
 (define-key gcalcli-mode-map (kbd "g") 'gcalcli-refresh)
 (define-key gcalcli-mode-map (kbd "l") 'gcalcli-toggle-location)
+(define-key gcalcli-mode-map (kbd "f") 'gcalcli-agenda-later)
+(define-key gcalcli-mode-map (kbd "b") 'gcalcli-agenda-earlier)
+(define-key gcalcli-mode-map (kbd "t") 'gcalcli-agenda-today)
 
 (provide 'gcalcli-mode)
 ;;; gcalcli-mode.el ends here
