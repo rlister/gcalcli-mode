@@ -74,7 +74,7 @@
     (mapconcat 'identity (cons gcalcli-bin args) " ")))
 
 (defun gcalcli-insert-agenda ()
-  "Run gcalcli and use output to replace currentbuffer content."
+  "Run gcalcli and use output to replace current buffer content."
   (with-temp-message "Updating agenda..."
     (save-excursion
       (let ((buffer-read-only nil)
