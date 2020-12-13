@@ -152,7 +152,7 @@
          (path (cdr cfg)))
     (switch-to-buffer (gcalcli-agenda-buffer-name (car cfg)))
     (gcalcli-mode)
-    (setq gcalcli--config-folder (cdr cfg))
+    (setq gcalcli--config-folder (and path (expand-file-name path)))
     (gcalcli-insert-agenda)
     (visual-line-mode -1)))
 
