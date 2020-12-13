@@ -125,12 +125,19 @@
   (interactive)
   (gcalcli-incr-start-offset nil))
 
+(defun gcalcli-agenda-buffer-name (&optional key)
+  "Build name for agenda buffer."
+  (if key
+      (format "*gcalcli: %s*" key)
+    "*gcalcli*"))
+
 ;;;###autoload
 (defun gcalcli-agenda ()
   "Display gcalcli agenda."
   (interactive)
-  (let ((cfg (gcalcli-read-config)))
-    (switch-to-buffer (format "*gcal %s*" (car cfg)))
+  (let* ((cfg (gcalcli-read-config))
+         (path (cdr cfg)))
+    (switch-to-buffer (gcalcli-agenda-buffer-name (car cfg)))
     (gcalcli-mode)
     (setq gcalcli--config-folder (cdr cfg))
     (gcalcli-insert-agenda)
