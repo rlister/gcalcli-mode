@@ -125,6 +125,19 @@
   (interactive)
   (gcalcli-incr-start-offset nil))
 
+(defun gcalcli-make-add-cmd ()
+  "Construct shell command and args to run gcalcli add."
+  (append
+   (when gcalcli--config-folder
+     (list "--config-folder" gcalcli--config-folder))
+   (list "add")))
+
+(defun gcalcli-add ()
+  "Call gcalcli add command for current config."
+  (interactive)
+  (pop-to-buffer
+   (apply #'make-comint "gcalcli-add" gcalcli-bin nil (gcalcli-make-add-cmd))))
+
 (defun gcalcli-agenda-buffer-name (&optional key)
   "Build name for agenda buffer."
   (if key
@@ -153,6 +166,7 @@
 (define-key gcalcli-mode-map (kbd "f") 'gcalcli-agenda-later)
 (define-key gcalcli-mode-map (kbd "b") 'gcalcli-agenda-earlier)
 (define-key gcalcli-mode-map (kbd "t") 'gcalcli-agenda-today)
+(define-key gcalcli-mode-map (kbd "a") 'gcalcli-add)
 
 (provide 'gcalcli-mode)
 ;;; gcalcli-mode.el ends here
