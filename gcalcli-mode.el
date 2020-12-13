@@ -110,15 +110,15 @@
     (setq gcalcli--start-offset nil))
   (gcalcli-refresh))
 
-(defun gcalcli-agenda-later ()
-  "Go forward in time by the current span."
-  (interactive)
-  (gcalcli-incr-start-offset 7))
+(defun gcalcli-agenda-later (&optional arg)
+  "Go forward in time by the current span. With ARG, do it that many times."
+  (interactive "p")
+  (gcalcli-incr-start-offset (* 7 (or arg 1))))
 
-(defun gcalcli-agenda-earlier ()
-  "Go backward in time by the current span."
-  (interactive)
-  (gcalcli-incr-start-offset -7))
+(defun gcalcli-agenda-earlier (&optional arg)
+  "Go backward in time by the current span. With ARG, do it that many times."
+  (interactive "p")
+  (gcalcli-incr-start-offset (* -7 (or arg 1))))
 
 (defun gcalcli-agenda-today ()
   "Reset view to current agenda span."
