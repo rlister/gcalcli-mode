@@ -45,16 +45,19 @@ Now run `M-x gcalcli-agenda` and you should see an agenda view.
 `gcalcli-mode` inherits from `special-mode` and uses the standard keys
 from that mode, plus the following additions:
 
-| Key | Function                            |
-|:----|:------------------------------------|
-| `g` | Call `gcalcli` again to update view |
-| `q` | Quit window and bury buffer         |
-| `n` | Next line                           |
-| `p` | Previous line                       |
-| `l` | Toggle event locations on/off       |
-| `f` | Move forward a week                 |
-| `b` | Move backward a week                |
-| `t` | Jump to week showing today          |
+| Key   | Function                            |
+|:------|:------------------------------------|
+| `g`   | Call `gcalcli` again to update view |
+| `q`   | Quit window and bury buffer         |
+| `n`   | Next line                           |
+| `p`   | Previous line                       |
+| `l`   | Toggle event locations on/off       |
+| `f`   | Move forward a week                 |
+| `b`   | Move backward a week                |
+| `t`   | Jump to week showing today          |
+| `a`   | Add an event                        |
+| `e`   | Edit events by search string        |
+| `C-k` | Delete events by search string      |
 
 ## Multiple google accounts
 
