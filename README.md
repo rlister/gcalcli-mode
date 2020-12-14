@@ -62,5 +62,5 @@ TODO
 
 ## Future plans
 
-- add, delete and edit events
+- delete and edit using current line text
 - arbitrary agenda spans
