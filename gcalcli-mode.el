@@ -138,6 +138,27 @@
   (pop-to-buffer
    (apply #'make-comint "gcalcli-add" gcalcli-bin nil (gcalcli-make-add-cmd))))
 
+(defun gcalcli-make-edit-delete-cmd (cmd)
+  "Construct shell command and args to run gcalcli edit or delete."
+  (let ((text (read-string "text: ")))
+    (append
+     (when gcalcli--config-folder
+       (list "--config-folder" gcalcli--config-folder))
+     (list cmd)
+     (list text))))
+
+(defun gcalcli-edit ()
+  "Call gcalcli edit command for current config."
+  (interactive)
+  (pop-to-buffer
+   (apply #'make-comint "gcalcli-edit" gcalcli-bin nil (gcalcli-make-edit-delete-cmd "edit"))))
+
+(defun gcalcli-delete ()
+  "Call gcalcli delete command for current config."
+  (interactive)
+  (pop-to-buffer
+   (apply #'make-comint "gcalcli-delete" gcalcli-bin nil (gcalcli-make-edit-delete-cmd "delete"))))
+
 (defun gcalcli-agenda-buffer-name (&optional key)
   "Build name for agenda buffer."
   (if key
@@ -167,6 +188,8 @@
 (define-key gcalcli-mode-map (kbd "b") 'gcalcli-agenda-earlier)
 (define-key gcalcli-mode-map (kbd "t") 'gcalcli-agenda-today)
 (define-key gcalcli-mode-map (kbd "a") 'gcalcli-add)
+(define-key gcalcli-mode-map (kbd "e") 'gcalcli-edit)
+(define-key gcalcli-mode-map (kbd "C-k") 'gcalcli-delete)
 
 (provide 'gcalcli-mode)
 ;;; gcalcli-mode.el ends here
