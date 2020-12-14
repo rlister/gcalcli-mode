@@ -58,7 +58,20 @@ from that mode, plus the following additions:
 
 ## Multiple google accounts
 
-TODO
+If you have multiple google logins, create a [gcalcli config
+folder](https://github.com/insanum/gcalcli#configuration-folders) for
+each account. This will contain oauth and cache (and optionally
+`gcalclirc`) for each account.
+
+Then set the following alist to point to the folders. If you have more
+than one entry, `gcalcli-agenda` will query for which to use. You can
+create multiple agenda buffers for multiple folders.
+
+```elisp
+(setq gcalcli-config-alist
+  '((home . "~/.config/gcalcli/home")
+    (work . "~/.config/gcalcli/work")))
+```
 
 ## Future plans
 
