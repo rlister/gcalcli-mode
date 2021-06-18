@@ -191,5 +191,6 @@
 (define-key gcalcli-mode-map (kbd "e") 'gcalcli-edit)
 (define-key gcalcli-mode-map (kbd "C-k") 'gcalcli-delete)
 
+(require 'ansi-color)
 (provide 'gcalcli-mode)
 ;;; gcalcli-mode.el ends here
