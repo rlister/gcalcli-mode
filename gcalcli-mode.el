@@ -102,6 +102,22 @@
   (interactive)
   (gcalcli-set-details "location"))
 
+(defun gcalcli-toggle-conference ()
+  "Show/unshow event conference links."
+  (interactive)
+  (gcalcli-set-details "conference"))
+
+;; recommended to use --lineart=ascii in config file
+(defun gcalcli-toggle-description ()
+  "Show/unshow event description."
+  (interactive)
+  (gcalcli-set-details "description"))
+
+(defun gcalcli-toggle-all ()
+  "Show/unshow all event fields."
+  (interactive)
+  (gcalcli-set-details "all"))
+
 (defun gcalcli-incr-start-offset (days)
   "Increase start offset by given number of days, or nil to reset."
   (if days
@@ -184,6 +200,9 @@
 (define-key gcalcli-mode-map (kbd "p") 'previous-line)
 (define-key gcalcli-mode-map (kbd "g") 'gcalcli-refresh)
 (define-key gcalcli-mode-map (kbd "l") 'gcalcli-toggle-location)
+(define-key gcalcli-mode-map (kbd "c") 'gcalcli-toggle-conference)
+(define-key gcalcli-mode-map (kbd "d") 'gcalcli-toggle-description)
+(define-key gcalcli-mode-map (kbd "A") 'gcalcli-toggle-all)
 (define-key gcalcli-mode-map (kbd "f") 'gcalcli-agenda-later)
 (define-key gcalcli-mode-map (kbd "b") 'gcalcli-agenda-earlier)
 (define-key gcalcli-mode-map (kbd "t") 'gcalcli-agenda-today)
