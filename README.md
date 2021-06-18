@@ -51,7 +51,10 @@ from that mode, plus the following additions:
 | `q`   | Quit window and bury buffer         |
 | `n`   | Next line                           |
 | `p`   | Previous line                       |
-| `l`   | Toggle event locations on/off       |
+| `l`   | Toggle event locations              |
+| `c`   | Toggle event conference fields      |
+| `d`   | Toggle event descriptions           |
+| `a`   | Toggle all event fields             |
 | `f`   | Move forward a week                 |
 | `b`   | Move backward a week                |
 | `t`   | Jump to week showing today          |
@@ -75,6 +78,15 @@ create multiple agenda buffers for multiple folders.
   '((home . "~/.config/gcalcli/home")
     (work . "~/.config/gcalcli/work")))
 ```
+
+## Configuration
+
+Generic configuration options probably belong in the gcalcli config
+file(s). This mode only handles toggling options for the
+`agenda --details` command.
+
+For better display of the description field, it is recommended to
+configure with `--lineart=ascii`.
 
 ## Future plans
 
