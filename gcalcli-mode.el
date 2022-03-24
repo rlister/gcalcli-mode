@@ -4,6 +4,7 @@
 
 ;; Author: Ric Lister
 ;; URL: https://github.com/rlister/gcalcli-mode
+;; Version: 20220324
 ;; Package-Requires: ((emacs "25.1"))
 
 ;; This file is not part of GNU Emacs.
